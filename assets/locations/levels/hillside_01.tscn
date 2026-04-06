@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://denffo8rxo8de"]
+
+[ext_resource type="PackedScene" uid="uid://b68s7hk73xlvo" path="res://assets/entities/player/peach.tscn" id="1_kk00r"]
+[ext_resource type="PackedScene" uid="uid://sxmyd0oloplv" path="res://assets/UI/some_label.tscn" id="2_dbe2u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kk00r"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dbe2u"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dbe2u"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_vanb0"]
+
+[node name="Node3D" type="Node3D" unique_id=374832989]
+
+[node name="Peach" parent="." unique_id=1399737280 instance=ExtResource("1_kk00r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.64551115, 1.219686, 0.26172936)
+
+[node name="someLabel" parent="Peach" unique_id=1001404057 instance=ExtResource("2_dbe2u")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=397355589]
+transform = Transform3D(8.941148, 0.154829, 0, -1.731506, 0.7995058, 0, 0, 0, 2.7578354, 0, -0.3919828, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=476928999]
+shape = SubResource("BoxShape3D_kk00r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D" unique_id=2019803679]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 9.313226e-10, 1.0000001, 0, 0, 0)
+mesh = SubResource("BoxMesh_dbe2u")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1031799086]
+transform = Transform3D(1, 0, 0, 0, 0.86649626, 0.4991836, 0, -0.4991836, 0.86649626, 0.059871674, 2.641977, 3.1471198)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=662773229]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9890889, 1.2468334, -1.1920929e-07)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=225134191]
+shape = SubResource("SphereShape3D_dbe2u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D/CollisionShape3D" unique_id=798656823]
+mesh = SubResource("SphereMesh_vanb0")

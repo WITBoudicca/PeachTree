@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://sxmyd0oloplv"]
+
+[node name="someLabel" type="Node2D" unique_id=1001404057]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=193677858]
+offset_top = 1.0
+offset_right = 233.0
+offset_bottom = 56.0
+bbcode_enabled = true
+text = "[tornado radius=15 freq=2] 
+	Wow Wow Hello!"
