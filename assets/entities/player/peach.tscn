@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://b68s7hk73xlvo"]
 
 [ext_resource type="Script" uid="uid://b3us7ux8tfon7" path="res://assets/entities/player/player_script.gd" id="1_rptdp"]
+[ext_resource type="PackedScene" uid="uid://cwev2wbie1ibo" path="res://assets/entities/player/Peach.blend" id="2_54deb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dr56f"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_fckkp"]
 
 [node name="Peach" type="Node3D" unique_id=1399737280]
 
@@ -15,8 +14,8 @@ script = ExtResource("1_rptdp")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1743637228]
 shape = SubResource("SphereShape3D_dr56f")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/CollisionShape3D" unique_id=523296719]
-mesh = SubResource("SphereMesh_fckkp")
+[node name="Peach2" parent="CharacterBody3D/CollisionShape3D" unique_id=662935108 instance=ExtResource("2_54deb")]
+transform = Transform3D(0.49, 0, 0, 0, 0.49, 0, 0, 0, 0.49, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1364936090]
 transform = Transform3D(1, 0, 0, 0, 0.808103, 0.5890412, 0, -0.5890412, 0.808103, 0, 0.78003573, 1.3420913)
