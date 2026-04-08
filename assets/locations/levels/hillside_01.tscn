@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://b68s7hk73xlvo" path="res://assets/entities/player/peach.tscn" id="1_kk00r"]
 [ext_resource type="PackedScene" uid="uid://sxmyd0oloplv" path="res://assets/UI/some_label.tscn" id="2_dbe2u"]
-[ext_resource type="PackedScene" uid="uid://du43oywqi7edc" path="res://assets/entities/tree/PeachTree.blend" id="3_vanb0"]
-[ext_resource type="PackedScene" uid="uid://debco7p3gekh5" path="res://assets/entities/rock/Rock.blend" id="4_w86cu"]
-[ext_resource type="PackedScene" uid="uid://dqt4l8eox3g85" path="res://assets/entities/log/Log.blend" id="5_vlrf3"]
+[ext_resource type="PackedScene" uid="uid://dt6b8y4kekp6r" path="res://assets/entities/log/Log.glb" id="3_w86cu"]
+[ext_resource type="PackedScene" uid="uid://mlfwodnp0lg1" path="res://assets/entities/tree/PeachTree.glb" id="4_vlrf3"]
+[ext_resource type="PackedScene" uid="uid://bda2ij1hac5bx" path="res://assets/entities/rock/Rock.glb" id="5_nmpkd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kk00r"]
 
@@ -17,7 +17,7 @@
 [node name="Node3D" type="Node3D" unique_id=374832989]
 
 [node name="Peach" parent="." unique_id=1399737280 instance=ExtResource("1_kk00r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.789832, 3.6496234, 2.0708354)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.862929, 4.255773, -0.50282145)
 
 [node name="someLabel" parent="Peach" unique_id=1001404057 instance=ExtResource("2_dbe2u")]
 
@@ -43,11 +43,11 @@ shape = SubResource("SphereShape3D_dbe2u")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D/CollisionShape3D" unique_id=798656823]
 mesh = SubResource("SphereMesh_vanb0")
 
-[node name="PeachTree" parent="." unique_id=272082320 instance=ExtResource("3_vanb0")]
-transform = Transform3D(0.9881455, 0.1535205, 0, -0.1535205, 0.9881455, 0, 0, 0, 1, -3.674916, 0.7183809, -0.17585897)
+[node name="Log" parent="." unique_id=509347276 instance=ExtResource("3_w86cu")]
+transform = Transform3D(0.30132285, 0.061005324, 0.9515686, -0.023241833, 0.99812454, -0.056630302, -0.9532387, -0.005052179, 0.30217564, 2.240264, -0.31549525, 3.4329462)
 
-[node name="Rock" parent="." unique_id=1704034691 instance=ExtResource("4_w86cu")]
-transform = Transform3D(-0.4768229, 0, -0.37116984, 0, 0.6042574, 0, 0.37116984, 0, -0.4768229, 4.6804028, -0.7552494, 2.548308)
+[node name="PeachTree" parent="." unique_id=1528841445 instance=ExtResource("4_vlrf3")]
+transform = Transform3D(0.9677751, 0.251816, 0, -0.251816, 0.9677751, 0, 0, 0, 1, -4.8652062, 1.1514857, -2.7093878)
 
-[node name="Log" parent="." unique_id=1770959598 instance=ExtResource("5_vlrf3")]
-transform = Transform3D(0.5957448, 0.0987638, 0.7970783, -0.16354983, 0.9865351, 0, -0.7863457, -0.13036202, 0.60387594, 1.1594121, -0.35930586, 3.675481)
+[node name="Rock" parent="." unique_id=1130606040 instance=ExtResource("5_nmpkd")]
+transform = Transform3D(-0.43948466, 0, -0.8982501, 0, 1, 0, 0.8982501, 0, -0.43948466, 2.8725996, 0.03164965, -1.003397)
