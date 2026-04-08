@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://du43oywqi7edc"
-path="res://.godot/imported/PeachTree.blend-e873ea56355b98f9b880d65f7c285526.scn"
+uid="uid://dqt4l8eox3g85"
+path="res://.godot/imported/Log.blend-9e12045594703a34eab806ac9f2c4ffe.scn"
 
 [deps]
 
-source_file="res://assets/entities/tree/PeachTree.blend"
-dest_files=["res://.godot/imported/PeachTree.blend-e873ea56355b98f9b880d65f7c285526.scn"]
+source_file="res://assets/entities/log/Log.blend"
+dest_files=["res://.godot/imported/Log.blend-9e12045594703a34eab806ac9f2c4ffe.scn"]
 
 [params]
 
