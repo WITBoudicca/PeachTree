@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://mlfwodnp0lg1" path="res://assets/entities/tree/PeachTree.glb" id="4_vlrf3"]
 [ext_resource type="PackedScene" uid="uid://bda2ij1hac5bx" path="res://assets/entities/rock/Rock.glb" id="5_nmpkd"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kk00r"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_w86cu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_dbe2u"]
 
@@ -22,13 +22,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.862929, 4.255773, -0.50282
 [node name="someLabel" parent="Peach" unique_id=1001404057 instance=ExtResource("2_dbe2u")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=397355589]
-transform = Transform3D(8.941148, 0.154829, 0, -1.731506, 0.7995058, 0, 0, 0, 2.7578354, 0, -0.3919828, 0)
+transform = Transform3D(274.88507, 0, 0, 0, 0.15016504, 0, 0, 0, 97.79224, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=476928999]
-shape = SubResource("BoxShape3D_kk00r")
+transform = Transform3D(1, -7.450581e-09, 0, -9.536743e-07, 1.0000017, 0, 0, 0, 1.0000001, 0, 0, 0)
+shape = SubResource("BoxShape3D_w86cu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D/CollisionShape3D" unique_id=2019803679]
-transform = Transform3D(2.5150478, -1.8626451e-09, 0, -1.4305115e-06, 1.2933981, 0, 0, 1.2045709e-09, 6.817007, 0, 0, 0)
+transform = Transform3D(1, 5.6878105e-07, -5.297187e-16, -5.6878105e-07, 1, -9.313226e-10, 5.293956e-23, 9.313226e-10, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_dbe2u")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1031799086]

@@ -1,22 +1,38 @@
 [gd_scene format=3 uid="uid://b68s7hk73xlvo"]
 
-[ext_resource type="Script" uid="uid://b3us7ux8tfon7" path="res://assets/entities/player/player_script.gd" id="1_rptdp"]
+[ext_resource type="Script" uid="uid://c468ytdn63356" path="res://assets/entities/player/camera_3d.gd" id="1_lwcga"]
+[ext_resource type="Script" uid="uid://nevjpsg0t5pr" path="res://assets/entities/player/player_physics_script.gd" id="1_pchqg"]
 [ext_resource type="PackedScene" uid="uid://c6wbon80dduhr" path="res://assets/entities/player/Peach.glb" id="2_54deb"]
+[ext_resource type="Script" uid="uid://dhrxtkpugar3k" path="res://assets/entities/player/camera_spring_arm_3d.gd" id="3_lwcga"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_54deb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dr56f"]
 
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_1u4ji"]
+
 [node name="Peach" type="Node3D" unique_id=1399737280]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1619109812]
-motion_mode = 1
-script = ExtResource("1_rptdp")
+[node name="PlayerRigidBody" type="RigidBody3D" parent="." unique_id=540009845]
+physics_material_override = SubResource("PhysicsMaterial_54deb")
+script = ExtResource("1_pchqg")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1743637228]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerRigidBody" unique_id=1743637228]
 shape = SubResource("SphereShape3D_dr56f")
 
-[node name="PeachVis" parent="CharacterBody3D/CollisionShape3D" unique_id=2125559950 instance=ExtResource("2_54deb")]
+[node name="PeachVis" parent="PlayerRigidBody/CollisionShape3D" unique_id=2125559950 instance=ExtResource("2_54deb")]
 transform = Transform3D(0.5005771, 0, 0, 0, 0.5005771, 0, 0, 0, 0.5005771, 0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1364936090]
-transform = Transform3D(1, 0, 0, 0, 0.808103, 0.5890412, 0, -0.5890412, 0.808103, 0, 0.78003573, 1.3420913)
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="PlayerRigidBody" unique_id=1174605440]
+remote_path = NodePath("../../CameraSpringArm3D")
+update_rotation = false
+
+[node name="CameraSpringArm3D" type="SpringArm3D" parent="." unique_id=893784739]
+spring_length = 5.0
+script = ExtResource("3_lwcga")
+
+[node name="Camera3D" type="Camera3D" parent="CameraSpringArm3D" unique_id=1364936090]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+attributes = SubResource("CameraAttributesPractical_1u4ji")
 current = true
+script = ExtResource("1_lwcga")

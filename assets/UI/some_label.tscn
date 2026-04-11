@@ -1,11 +1,29 @@
 [gd_scene format=3 uid="uid://sxmyd0oloplv"]
 
-[node name="someLabel" type="Node2D" unique_id=1001404057]
+[ext_resource type="Script" uid="uid://bqwt2hv5fjwib" path="res://assets/UI/TitleScreen.gd" id="1_akoi8"]
+[ext_resource type="Texture2D" uid="uid://tjh3wyy5oglm" path="res://assets/UI/Title Temp.jpg" id="2_kwec2"]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=193677858]
-offset_top = 1.0
-offset_right = 233.0
-offset_bottom = 56.0
-bbcode_enabled = true
-text = "[tornado radius=15 freq=2] 
-	Wow Wow Hello!"
+[node name="Title Screen" type="Node2D" unique_id=1001404057]
+script = ExtResource("1_akoi8")
+
+[node name="PlayButton" type="Button" parent="." unique_id=232934289]
+offset_left = 909.0
+offset_top = 406.0
+offset_right = 1061.0
+offset_bottom = 463.0
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="." unique_id=1328058758]
+offset_left = 909.0
+offset_top = 500.0
+offset_right = 1061.0
+offset_bottom = 557.0
+text = "Quit
+"
+
+[node name="TitleTemp" type="Sprite2D" parent="." unique_id=495761986]
+position = Vector2(385, 220.99998)
+scale = Vector2(1.6168225, 1.6168225)
+texture = ExtResource("2_kwec2")
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
