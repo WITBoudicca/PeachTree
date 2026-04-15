@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dt6b8y4kekp6r"
-path="res://.godot/imported/Log.glb-74f89307632cfa052318a169f53e93f5.scn"
+uid="uid://bv63h3y7dn04y"
+path="res://.godot/imported/RockCluster.glb-38c820730b53a2fd8d41cefefe3a8bd4.scn"
 
 [deps]
 
-source_file="res://assets/entities/log/Log.glb"
-dest_files=["res://.godot/imported/Log.glb-74f89307632cfa052318a169f53e93f5.scn"]
+source_file="res://assets/entities/obstacles/RockCluster.glb"
+dest_files=["res://.godot/imported/RockCluster.glb-38c820730b53a2fd8d41cefefe3a8bd4.scn"]
 
 [params]
 

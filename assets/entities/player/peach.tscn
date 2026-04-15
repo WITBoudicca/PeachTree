@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://nevjpsg0t5pr" path="res://assets/entities/player/player_physics_script.gd" id="1_pchqg"]
 [ext_resource type="PackedScene" uid="uid://c6wbon80dduhr" path="res://assets/entities/player/Peach.glb" id="2_54deb"]
+[ext_resource type="Script" uid="uid://bfieusgyg5jly" path="res://assets/entities/player/jump_delay.gd" id="3_1u4ji"]
 [ext_resource type="Script" uid="uid://dhrxtkpugar3k" path="res://assets/entities/player/camera_spring_arm_3d.gd" id="3_lwcga"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_54deb"]
@@ -12,7 +13,8 @@
 
 [node name="Peach" type="Node3D" unique_id=1399737280]
 
-[node name="PlayerRigidBody" type="RigidBody3D" parent="." unique_id=540009845]
+[node name="PlayerRigidBody" type="RigidBody3D" parent="." unique_id=540009845 groups=["Player"]]
+collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_54deb")
 script = ExtResource("1_pchqg")
 
@@ -26,6 +28,10 @@ transform = Transform3D(0.5005771, 0, 0, 0, 0.5005771, 0, 0, 0, 0.5005771, 0, 0,
 remote_path = NodePath("../../CameraSpringArm3D")
 update_rotation = false
 
+[node name="jumpDelay" type="Timer" parent="PlayerRigidBody" unique_id=1582943266]
+wait_time = 2.0
+script = ExtResource("3_1u4ji")
+
 [node name="CameraSpringArm3D" type="SpringArm3D" parent="." unique_id=893784739]
 spring_length = 5.0
 script = ExtResource("3_lwcga")
@@ -34,3 +40,6 @@ script = ExtResource("3_lwcga")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 attributes = SubResource("CameraAttributesPractical_1u4ji")
 current = true
+
+[connection signal="jumpPressed" from="PlayerRigidBody" to="PlayerRigidBody/jumpDelay" method="_on_player_rigid_body_jump_pressed"]
+[connection signal="timeout" from="PlayerRigidBody/jumpDelay" to="PlayerRigidBody" method="_on_jump_delay_timeout"]

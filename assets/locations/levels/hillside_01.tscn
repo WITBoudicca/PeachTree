@@ -2,29 +2,44 @@
 
 [ext_resource type="PackedScene" uid="uid://b68s7hk73xlvo" path="res://assets/entities/player/peach.tscn" id="1_kk00r"]
 [ext_resource type="PackedScene" uid="uid://sxmyd0oloplv" path="res://assets/UI/some_label.tscn" id="2_dbe2u"]
-[ext_resource type="PackedScene" uid="uid://dt6b8y4kekp6r" path="res://assets/entities/log/Log.glb" id="3_w86cu"]
 [ext_resource type="PackedScene" uid="uid://mlfwodnp0lg1" path="res://assets/entities/tree/PeachTree.glb" id="4_vlrf3"]
-[ext_resource type="PackedScene" uid="uid://bda2ij1hac5bx" path="res://assets/entities/rock/Rock.glb" id="5_nmpkd"]
-[ext_resource type="PackedScene" uid="uid://cnm221jer7hl3" path="res://assets/entities/Tracks/base_track.tscn" id="6_vlrf3"]
+[ext_resource type="PackedScene" uid="uid://2m10oibv5lt8" path="res://assets/entities/obstacles/rock.tscn" id="6_nmpkd"]
+[ext_resource type="PackedScene" uid="uid://d1uocd3ijbl1y" path="res://assets/entities/track/track.tscn" id="6_nvngs"]
+[ext_resource type="PackedScene" uid="uid://bt0l3o06hnudp" path="res://assets/entities/obstacles/log.tscn" id="6_ywugl"]
+[ext_resource type="PackedScene" uid="uid://bka2yfs4re2an" path="res://assets/entities/track/jump_track.tscn" id="7_nq0gu"]
+[ext_resource type="PackedScene" uid="uid://c4nwwhkxg05rw" path="res://assets/entities/track/hole_track.tscn" id="8_c1m8b"]
+[ext_resource type="PackedScene" uid="uid://lkuma5yl7fg" path="res://assets/entities/track/hill_track.tscn" id="9_g7cbc"]
+[ext_resource type="PackedScene" uid="uid://wtqt2lnmssut" path="res://assets/entities/obstacles/bush.tscn" id="10_nq0gu"]
 
 [node name="Node3D" type="Node3D" unique_id=374832989]
 
-[node name="Peach" parent="." unique_id=1399737280 instance=ExtResource("1_kk00r")]
-transform = Transform3D(0.977732, -0.20985746, 0, 0.20985746, 0.977732, 0, 0, 0, 1, -6.1775494, -2.9433887, -0.50282145)
+[node name="Peach" parent="." unique_id=1399737280 groups=["Player"] instance=ExtResource("1_kk00r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1775494, 2.556611, -5.0028214)
 
 [node name="UI" parent="Peach" unique_id=1001404057 instance=ExtResource("2_dbe2u")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1031799086]
 transform = Transform3D(1, 0, 0, 0, 0.86649626, 0.4991836, 0, -0.4991836, 0.86649626, 0.059871674, 2.641977, 3.1471198)
 
-[node name="Log" parent="." unique_id=509347276 instance=ExtResource("3_w86cu")]
-transform = Transform3D(-0.98666805, -0.013774533, 0.16216159, -0.023241833, 0.99812466, -0.05663031, -0.16107738, -0.059644252, -0.9851378, 9.462276, -20.979149, -47.288715)
-
 [node name="PeachTree" parent="." unique_id=1528841445 instance=ExtResource("4_vlrf3")]
-transform = Transform3D(0.9990703, 0.04311374, 0, -0.04311374, 0.9990703, 0, 0, 0, 1, -4.5505857, -5.7691708, -2.7093878)
+transform = Transform3D(0.9990703, 0.04311374, 0, -0.04311374, 0.9990703, 0, 0, 0, 1, -4.5505857, -0.26917076, -7.209388)
 
-[node name="Rock" parent="." unique_id=1130606040 instance=ExtResource("5_nmpkd")]
-transform = Transform3D(-0.43948466, 0, -0.8982501, 0, 1, 0, 0.8982501, 0, -0.43948466, -3.8108215, -15.429573, -32.07746)
+[node name="Rock2" parent="." unique_id=1130606040 groups=["Obstacles"] instance=ExtResource("6_nmpkd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1.5, -20.5)
 
-[node name="BaseTrack" parent="." unique_id=2101440671 instance=ExtResource("6_vlrf3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9045467, 1.8167963, -27.45845)
+[node name="Log2" parent="." unique_id=509347276 groups=["Obstacles"] instance=ExtResource("6_ywugl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -2.5, -26.5)
+
+[node name="Track2" parent="." unique_id=927522453 instance=ExtResource("6_nvngs")]
+
+[node name="JumpTrack" parent="." unique_id=2116982132 instance=ExtResource("7_nq0gu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.5, -75)
+
+[node name="HoleTrack" parent="." unique_id=1648786266 instance=ExtResource("8_c1m8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17, -150)
+
+[node name="HillTrack" parent="." unique_id=1839008478 instance=ExtResource("9_g7cbc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25.5, -225)
+
+[node name="Bush" parent="." unique_id=1010906404 instance=ExtResource("10_nq0gu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -2.1, -22)
