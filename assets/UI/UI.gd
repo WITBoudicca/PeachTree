@@ -15,15 +15,13 @@ func _ready() -> void:
 	playUI = $"PlayUI"
 	distanceBar = $"PlayUI/DistanceBar"
 	distancePips = $"PlayUI/DistancePips"
+	Controller.game_Over.connect(_controller_game_over)
+	Controller.game_Start.connect(_controller_game_start)
 
 
 
 func _on_play_button_pressed() -> void:
-	playUI.visible = true
-	
-	Controller.canMove = true
-	print(Controller.canMove)
-	titleScreen.visible = false
+	Controller._gameStart()
 
 
 
@@ -36,3 +34,11 @@ func _process(_delta: float) -> void: #it's obviously bad to do the pips in the 
 		distancePips.text = ""
 		for i in range(Controller.totDistance):
 			distancePips.text += "O"
+
+func _controller_game_over():
+	playUI.visible = false
+	titleScreen.visible = true
+
+func _controller_game_start():
+	titleScreen.visible = false
+	playUI.visible = true

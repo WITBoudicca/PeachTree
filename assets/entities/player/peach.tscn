@@ -4,18 +4,33 @@
 [ext_resource type="PackedScene" uid="uid://c6wbon80dduhr" path="res://assets/entities/player/Peach.glb" id="2_54deb"]
 [ext_resource type="Script" uid="uid://bfieusgyg5jly" path="res://assets/entities/player/jump_delay.gd" id="3_1u4ji"]
 [ext_resource type="Script" uid="uid://dhrxtkpugar3k" path="res://assets/entities/player/camera_spring_arm_3d.gd" id="3_lwcga"]
+[ext_resource type="AudioStream" uid="uid://cpdat60anfva8" path="res://assets/audio/The Rolling Peach.mp3" id="5_1u4ji"]
+[ext_resource type="Shader" uid="uid://htw8cfrx836q" path="res://assets/UI/pixel.gdshader" id="6_1jvbe"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_54deb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dr56f"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_1u4ji"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 40.18
+
+[sub_resource type="QuadMesh" id="QuadMesh_ynpc2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oaqal"]
+render_priority = 0
+shader = ExtResource("6_1jvbe")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lwcga"]
+height = 0.1758728
+radius = 0.24902344
 
 [node name="Peach" type="Node3D" unique_id=1399737280]
 
 [node name="PlayerRigidBody" type="RigidBody3D" parent="." unique_id=540009845 groups=["Player"]]
 collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_54deb")
+gravity_scale = 0.0
 script = ExtResource("1_pchqg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerRigidBody" unique_id=1743637228]
@@ -24,13 +39,17 @@ shape = SubResource("SphereShape3D_dr56f")
 [node name="PeachVis" parent="PlayerRigidBody/CollisionShape3D" unique_id=2125559950 instance=ExtResource("2_54deb")]
 transform = Transform3D(0.5005771, 0, 0, 0, 0.5005771, 0, 0, 0, 0.5005771, 0, 0, 0)
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="PlayerRigidBody" unique_id=1174605440]
+[node name="CameraRemoteTransform" type="RemoteTransform3D" parent="PlayerRigidBody" unique_id=1174605440]
 remote_path = NodePath("../../CameraSpringArm3D")
 update_rotation = false
 
 [node name="jumpDelay" type="Timer" parent="PlayerRigidBody" unique_id=1582943266]
-wait_time = 2.0
+wait_time = 10.0
 script = ExtResource("3_1u4ji")
+
+[node name="JumpDetectRemoteTransform" type="RemoteTransform3D" parent="PlayerRigidBody" unique_id=2018536790]
+remote_path = NodePath("../../JumpDetection")
+update_rotation = false
 
 [node name="CameraSpringArm3D" type="SpringArm3D" parent="." unique_id=893784739]
 spring_length = 5.0
@@ -41,5 +60,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 attributes = SubResource("CameraAttributesPractical_1u4ji")
 current = true
 
-[connection signal="jumpPressed" from="PlayerRigidBody" to="PlayerRigidBody/jumpDelay" method="_on_player_rigid_body_jump_pressed"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="CameraSpringArm3D/Camera3D" unique_id=1250878936]
+stream = ExtResource("5_1u4ji")
+autoplay = true
+playback_type = 1
+parameters/looping = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CameraSpringArm3D/Camera3D" unique_id=647803732]
+transform = Transform3D(2.2656727, 0, 0, 0, 1.3829247, 0, 0, 0, 1, 0, 0, -0.54359674)
+mesh = SubResource("QuadMesh_ynpc2")
+surface_material_override/0 = SubResource("ShaderMaterial_oaqal")
+
+[node name="JumpDetection" type="Area3D" parent="." unique_id=1122860410]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="JumpDetection" unique_id=20311987]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38102722, 0)
+shape = SubResource("CylinderShape3D_lwcga")
+
 [connection signal="timeout" from="PlayerRigidBody/jumpDelay" to="PlayerRigidBody" method="_on_jump_delay_timeout"]
+[connection signal="body_entered" from="JumpDetection" to="PlayerRigidBody" method="_on_jump_detection_body_entered"]

@@ -7,7 +7,7 @@ data = PackedVector3Array(-21.4471, 5.6759996, 33.996998, -23.2505, 5.9426, 41.5
 
 [node name="track_2" unique_id=187092937 instance=ExtResource("1_tqmlt")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Track" parent_id_path=PackedInt32Array(1339045480) index="0" unique_id=1014646509]
+[node name="StaticBody3D" type="StaticBody3D" parent="Track" parent_id_path=PackedInt32Array(1295552335) index="0" unique_id=1014646509]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Track/StaticBody3D" index="0" unique_id=169764733]
 shape = SubResource("ConcavePolygonShape3D_stklg")
