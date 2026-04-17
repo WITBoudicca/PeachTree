@@ -2,13 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://b68s7hk73xlvo" path="res://assets/entities/player/peach.tscn" id="1_kk00r"]
 [ext_resource type="PackedScene" uid="uid://sxmyd0oloplv" path="res://assets/UI/some_label.tscn" id="2_dbe2u"]
-[ext_resource type="PackedScene" uid="uid://mlfwodnp0lg1" path="res://assets/entities/tree/PeachTree.glb" id="4_vlrf3"]
-[ext_resource type="PackedScene" uid="uid://2m10oibv5lt8" path="res://assets/entities/obstacles/rock.tscn" id="6_nmpkd"]
 [ext_resource type="PackedScene" uid="uid://d1uocd3ijbl1y" path="res://assets/entities/track/track.tscn" id="6_nvngs"]
-[ext_resource type="PackedScene" uid="uid://bt0l3o06hnudp" path="res://assets/entities/obstacles/log.tscn" id="6_ywugl"]
+[ext_resource type="PackedScene" uid="uid://bsm6h580set1r" path="res://assets/entities/tree/peach_tree.tscn" id="6_vlrf3"]
 [ext_resource type="PackedScene" uid="uid://bka2yfs4re2an" path="res://assets/entities/track/jump_track.tscn" id="7_nq0gu"]
 [ext_resource type="PackedScene" uid="uid://c4nwwhkxg05rw" path="res://assets/entities/track/hole_track.tscn" id="8_c1m8b"]
-[ext_resource type="PackedScene" uid="uid://wtqt2lnmssut" path="res://assets/entities/obstacles/bush.tscn" id="10_nq0gu"]
 
 [sub_resource type="Environment" id="Environment_nvngs"]
 background_mode = 1
@@ -42,15 +39,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1775494, 2.556611, -5.0028
 
 [node name="UI" parent="Peach" unique_id=1001404057 instance=ExtResource("2_dbe2u")]
 
-[node name="PeachTree" parent="." unique_id=1528841445 instance=ExtResource("4_vlrf3")]
-transform = Transform3D(0.9990703, 0.04311374, 0, -0.04311374, 0.9990703, 0, 0, 0, 1, -4.5505857, -0.26917076, -7.209388)
-
-[node name="Rock2" parent="." unique_id=1130606040 groups=["Obstacles"] instance=ExtResource("6_nmpkd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1.5, -20.5)
-
-[node name="Log2" parent="." unique_id=509347276 groups=["Obstacles"] instance=ExtResource("6_ywugl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -2.5, -26.5)
-
 [node name="Track2" parent="." unique_id=927522453 instance=ExtResource("6_nvngs")]
 
 [node name="JumpTrack" parent="." unique_id=2116982132 instance=ExtResource("7_nq0gu")]
@@ -59,9 +47,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.5, -75)
 [node name="HoleTrack" parent="." unique_id=1648786266 instance=ExtResource("8_c1m8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17, -150)
 
-[node name="Bush" parent="." unique_id=1010906404 instance=ExtResource("10_nq0gu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -2.1, -22)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1827184341]
 environment = SubResource("Environment_nvngs")
 
@@ -69,3 +54,6 @@ environment = SubResource("Environment_nvngs")
 transform = Transform3D(1, 0, 0, 0, -0.12018885, 0.99275106, 0, -0.99275106, -0.12018885, 0, 60.25939, 0)
 shadow_enabled = true
 shadow_blur = 5.0
+
+[node name="PeachTree2" parent="." unique_id=1528841445 instance=ExtResource("6_vlrf3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2842007, -0.24317321, -7.2551346)

@@ -2,8 +2,19 @@
 
 [ext_resource type="Script" uid="uid://bqwt2hv5fjwib" path="res://assets/UI/UI.gd" id="1_akoi8"]
 [ext_resource type="Texture2D" uid="uid://tjh3wyy5oglm" path="res://assets/UI/Title Temp.jpg" id="2_kwec2"]
+[ext_resource type="FontFile" uid="uid://cv4ehaichw6hi" path="res://assets/UI/PublicPixel-rv0pA.ttf" id="3_kwec2"]
+[ext_resource type="Texture2D" uid="uid://b321t0hdya2ko" path="res://assets/UI/PipTemp.jpg" id="4_ybwfh"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_akoi8"]
+[sub_resource type="Theme" id="Theme_kwec2"]
+default_font = ExtResource("3_kwec2")
+
+[sub_resource type="Theme" id="Theme_mymci"]
+default_font = ExtResource("3_kwec2")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kwec2"]
+
+[sub_resource type="Theme" id="Theme_ybwfh"]
+default_font = ExtResource("3_kwec2")
 
 [node name="UI" type="Node2D" unique_id=1001404057]
 script = ExtResource("1_akoi8")
@@ -27,6 +38,7 @@ offset_right = -52.0
 offset_bottom = -146.0
 grow_horizontal = 0
 grow_vertical = 0
+theme = SubResource("Theme_kwec2")
 text = "Play"
 
 [node name="QuitButton" type="Button" parent="TitleScreen" unique_id=1328058758]
@@ -42,6 +54,7 @@ offset_right = -52.0
 offset_bottom = -52.0
 grow_horizontal = 0
 grow_vertical = 0
+theme = SubResource("Theme_mymci")
 text = "Quit
 "
 
@@ -62,22 +75,61 @@ offset_bottom = 648.0
 mouse_filter = 2
 
 [node name="DistanceBar" type="ProgressBar" parent="PlayUI" unique_id=1257236781]
-modulate = Color(0.34077296, 0.32017273, 0.31887785, 1)
+modulate = Color(0.3372549, 0.5647059, 0.50980395, 1)
 layout_mode = 0
 offset_left = 29.0
 offset_top = 30.0
 offset_right = 429.0
 offset_bottom = 45.0
-theme_override_styles/background = SubResource("StyleBoxEmpty_akoi8")
+theme_override_styles/background = SubResource("StyleBoxEmpty_kwec2")
+max_value = 1000.0
 show_percentage = false
 
 [node name="DistancePips" type="RichTextLabel" parent="PlayUI" unique_id=682480475]
+modulate = Color(0.8039216, 0.47843137, 0.5294118, 1)
 layout_mode = 0
 offset_left = 29.0
 offset_top = 60.0
 offset_right = 429.0
 offset_bottom = 100.0
+theme = SubResource("Theme_ybwfh")
 fit_content = true
+
+[node name="Health1" type="TextureRect" parent="PlayUI" unique_id=1573776025]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -145.005
+offset_top = 21.0
+offset_right = -105.005005
+offset_bottom = 62.0
+texture = ExtResource("4_ybwfh")
+stretch_mode = 2
+
+[node name="Health2" type="TextureRect" parent="PlayUI" unique_id=1670916853]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.505005
+offset_top = 21.0
+offset_right = -64.505005
+offset_bottom = 62.0
+texture = ExtResource("4_ybwfh")
+stretch_mode = 2
+
+[node name="Health3" type="TextureRect" parent="PlayUI" unique_id=1202875231]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -65.0
+offset_top = 21.0
+offset_right = -25.0
+offset_bottom = 62.0
+texture = ExtResource("4_ybwfh")
+stretch_mode = 2
 
 [connection signal="pressed" from="TitleScreen/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="TitleScreen/QuitButton" to="." method="_on_quit_button_pressed"]

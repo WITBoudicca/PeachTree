@@ -16,9 +16,10 @@ size = Vector3(143, 1, 75)
 [node name="HoleTrack" unique_id=1648786266 instance=ExtResource("1_t5f6h")]
 script = ExtResource("2_tnqb7")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Track" parent_id_path=PackedInt32Array(264118763) index="0" unique_id=777996987]
+[node name="TrackCollision" type="StaticBody3D" parent="Track" parent_id_path=PackedInt32Array(264118763) index="0" unique_id=777996987]
+collision_layer = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/StaticBody3D" index="0" unique_id=795677152]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackCollision" index="0" unique_id=795677152]
 shape = SubResource("ConcavePolygonShape3D_tnqb7")
 
 [node name="despawnDelay" type="Timer" parent="Track" parent_id_path=PackedInt32Array(264118763) index="1" unique_id=1349040895]
@@ -37,6 +38,13 @@ shape = SubResource("BoxShape3D_6sjq7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FallOffArea" index="0" unique_id=37394137]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32.56, -37.5)
 shape = SubResource("BoxShape3D_yntsp")
+
+[node name="ObstSpawnChecker" type="RayCast3D" parent="." index="3" unique_id=1459982168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+target_position = Vector3(0, -10, 0)
+collision_mask = 4
+hit_from_inside = true
+debug_shape_custom_color = Color(0.054241963, 0.29207325, 1, 1)
 
 [connection signal="_pause_despawn" from="." to="Track/despawnDelay" method="track_stop_despawn"]
 [connection signal="_start_despawn" from="." to="Track/despawnDelay" method="track_start_despawn"]

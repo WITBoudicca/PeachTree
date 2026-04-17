@@ -7,6 +7,11 @@ var quitButton
 var playUI
 var distanceBar
 var distancePips
+var health1
+var health2
+var health3
+var darkHealth
+var lightHealth
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	playButton = $"TitleScreen/PlayButton"
@@ -15,9 +20,15 @@ func _ready() -> void:
 	playUI = $"PlayUI"
 	distanceBar = $"PlayUI/DistanceBar"
 	distancePips = $"PlayUI/DistancePips"
+	health1 = $PlayUI/Health1
+	health2 = $PlayUI/Health2
+	health3 = $PlayUI/Health3
 	Controller.game_Over.connect(_controller_game_over)
 	Controller.game_Start.connect(_controller_game_start)
-
+	Controller.take_Damage.connect(_on_damage)
+	lightHealth = "#FFFFFF"
+	darkHealth = "#919191"
+	
 
 
 func _on_play_button_pressed() -> void:
@@ -42,3 +53,23 @@ func _controller_game_over():
 func _controller_game_start():
 	titleScreen.visible = false
 	playUI.visible = true
+	_on_damage()
+
+func _on_damage():
+	match Controller.health:
+		3:
+			health3.modulate = Color(lightHealth)
+			health2.modulate = Color(lightHealth)
+			health1.modulate = Color(lightHealth)
+		2:
+			health3.modulate = Color(darkHealth)
+			health2.modulate = Color(lightHealth)
+			health1.modulate = Color(lightHealth)
+		1:
+			health3.modulate = Color(darkHealth)
+			health2.modulate = Color(darkHealth)
+			health1.modulate = Color(lightHealth)
+		0:
+			health3.modulate = Color(darkHealth)
+			health2.modulate = Color(darkHealth)
+			health1.modulate = Color(darkHealth)

@@ -16,12 +16,16 @@ size = Vector3(143, 1, 75)
 [node name="JumpTrack" unique_id=2116982132 instance=ExtResource("1_5ja8a")]
 script = ExtResource("2_jx84g")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Track" parent_id_path=PackedInt32Array(570252583) index="0" unique_id=1941864244]
+[node name="Track" parent="." index="0" unique_id=570252583]
+layers = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/StaticBody3D" index="0" unique_id=753708436]
+[node name="TrackCollision" type="StaticBody3D" parent="Track" index="0" unique_id=1941864244]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Track/TrackCollision" index="0" unique_id=753708436]
 shape = SubResource("ConcavePolygonShape3D_jx84g")
 
-[node name="despawnDelay" type="Timer" parent="Track" parent_id_path=PackedInt32Array(570252583) index="1" unique_id=692689149]
+[node name="despawnDelay" type="Timer" parent="Track" index="1" unique_id=692689149]
 wait_time = 10.0
 script = ExtResource("3_fi6pg")
 
@@ -37,6 +41,12 @@ shape = SubResource("BoxShape3D_fi6pg")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FallOffArea" index="0" unique_id=1440980608]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32.56, -37.5)
 shape = SubResource("BoxShape3D_ql221")
+
+[node name="ObstSpawnChecker" type="RayCast3D" parent="." index="3" unique_id=921353596]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+target_position = Vector3(0, -10, 0)
+collision_mask = 4
+debug_shape_custom_color = Color(0.054241963, 0.29207325, 1, 1)
 
 [connection signal="_pause_despawn" from="." to="Track/despawnDelay" method="track_stop_despawn"]
 [connection signal="_start_despawn" from="." to="Track/despawnDelay" method="track_start_despawn"]

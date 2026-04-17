@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://nevjpsg0t5pr" path="res://assets/entities/player/player_physics_script.gd" id="1_pchqg"]
 [ext_resource type="PackedScene" uid="uid://c6wbon80dduhr" path="res://assets/entities/player/Peach.glb" id="2_54deb"]
-[ext_resource type="Script" uid="uid://bfieusgyg5jly" path="res://assets/entities/player/jump_delay.gd" id="3_1u4ji"]
 [ext_resource type="Script" uid="uid://dhrxtkpugar3k" path="res://assets/entities/player/camera_spring_arm_3d.gd" id="3_lwcga"]
+[ext_resource type="Script" uid="uid://lkua4itjd052" path="res://assets/entities/player/hurt_delay.gd" id="3_ynpc2"]
 [ext_resource type="AudioStream" uid="uid://cpdat60anfva8" path="res://assets/audio/The Rolling Peach.mp3" id="5_1u4ji"]
 [ext_resource type="Shader" uid="uid://htw8cfrx836q" path="res://assets/UI/pixel.gdshader" id="6_1jvbe"]
 [ext_resource type="AudioStream" uid="uid://hap5mx1dr67a" path="res://assets/audio/The Peach Tree.mp3" id="6_ynpc2"]
@@ -11,6 +11,42 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_54deb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dr56f"]
+
+[sub_resource type="Animation" id="Animation_ynpc2"]
+resource_name = "Hurt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_oaqal"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ytu83"]
+_data = {
+&"Hurt": SubResource("Animation_ynpc2"),
+&"RESET": SubResource("Animation_oaqal")
+}
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_1u4ji"]
 dof_blur_far_enabled = true
@@ -32,6 +68,7 @@ radius = 0.24902344
 collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_54deb")
 gravity_scale = 0.0
+angular_damp = 0.2
 script = ExtResource("1_pchqg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerRigidBody" unique_id=1743637228]
@@ -40,13 +77,16 @@ shape = SubResource("SphereShape3D_dr56f")
 [node name="PeachVis" parent="PlayerRigidBody/CollisionShape3D" unique_id=2125559950 instance=ExtResource("2_54deb")]
 transform = Transform3D(0.5005771, 0, 0, 0, 0.5005771, 0, 0, 0, 0.5005771, 0, 0, 0)
 
+[node name="PlayerAnimator" type="AnimationPlayer" parent="PlayerRigidBody/CollisionShape3D/PeachVis" unique_id=751591346]
+libraries/ = SubResource("AnimationLibrary_ytu83")
+
 [node name="CameraRemoteTransform" type="RemoteTransform3D" parent="PlayerRigidBody" unique_id=1174605440]
 remote_path = NodePath("../../CameraSpringArm3D")
 update_rotation = false
 
-[node name="jumpDelay" type="Timer" parent="PlayerRigidBody" unique_id=1582943266]
-wait_time = 10.0
-script = ExtResource("3_1u4ji")
+[node name="hurtDelay" type="Timer" parent="PlayerRigidBody" unique_id=1582943266]
+wait_time = 2.0
+script = ExtResource("3_ynpc2")
 
 [node name="JumpDetectRemoteTransform" type="RemoteTransform3D" parent="PlayerRigidBody" unique_id=2018536790]
 remote_path = NodePath("../../JumpDetection")
@@ -79,10 +119,12 @@ mesh = SubResource("QuadMesh_ynpc2")
 surface_material_override/0 = SubResource("ShaderMaterial_oaqal")
 
 [node name="JumpDetection" type="Area3D" parent="." unique_id=1122860410]
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="JumpDetection" unique_id=20311987]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38102722, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4130868, 0)
 shape = SubResource("CylinderShape3D_lwcga")
 
-[connection signal="timeout" from="PlayerRigidBody/jumpDelay" to="PlayerRigidBody" method="_on_jump_delay_timeout"]
+[connection signal="timeout" from="PlayerRigidBody/hurtDelay" to="PlayerRigidBody" method="_on_jump_delay_timeout"]
 [connection signal="body_entered" from="JumpDetection" to="PlayerRigidBody" method="_on_jump_detection_body_entered"]
+[connection signal="body_exited" from="JumpDetection" to="PlayerRigidBody" method="_on_jump_detection_body_exited"]

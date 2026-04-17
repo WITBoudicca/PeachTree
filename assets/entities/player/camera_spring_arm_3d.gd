@@ -26,3 +26,4 @@ func _process(_delta: float) -> void:
 		if (cameraModeBool == true):
 			changeCamera()
 			cameraModeBool = !cameraModeBool
+		rotation.y += 0.001
