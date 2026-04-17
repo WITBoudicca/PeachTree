@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dhrxtkpugar3k" path="res://assets/entities/player/camera_spring_arm_3d.gd" id="3_lwcga"]
 [ext_resource type="AudioStream" uid="uid://cpdat60anfva8" path="res://assets/audio/The Rolling Peach.mp3" id="5_1u4ji"]
 [ext_resource type="Shader" uid="uid://htw8cfrx836q" path="res://assets/UI/pixel.gdshader" id="6_1jvbe"]
+[ext_resource type="AudioStream" uid="uid://hap5mx1dr67a" path="res://assets/audio/The Peach Tree.mp3" id="6_ynpc2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_54deb"]
 
@@ -60,8 +61,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 attributes = SubResource("CameraAttributesPractical_1u4ji")
 current = true
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="CameraSpringArm3D/Camera3D" unique_id=1250878936]
+[node name="GameMusic" type="AudioStreamPlayer3D" parent="CameraSpringArm3D/Camera3D" unique_id=1250878936]
 stream = ExtResource("5_1u4ji")
+autoplay = true
+playback_type = 1
+parameters/looping = true
+
+[node name="MenuMusic" type="AudioStreamPlayer3D" parent="CameraSpringArm3D/Camera3D" unique_id=1081898673]
+stream = ExtResource("6_ynpc2")
 autoplay = true
 playback_type = 1
 parameters/looping = true
