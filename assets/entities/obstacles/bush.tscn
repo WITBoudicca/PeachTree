@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://4o4621h0kpsm" path="res://assets/entities/obstacles/Bush.glb" id="1_m8inq"]
 [ext_resource type="Script" uid="uid://csr4ed2lhf4c1" path="res://bush.gd" id="2_ockhy"]
-[ext_resource type="AudioStream" uid="uid://bp0tj5o2ij1e6" path="res://assets/audio/Rock_Impact_1.mp3" id="3_hsgds"]
-[ext_resource type="AudioStream" uid="uid://boo312xm4vwas" path="res://assets/audio/Rock_Impact_2.mp3" id="4_uyok6"]
+[ext_resource type="AudioStream" uid="uid://r8q3wd4o28b5" path="res://assets/audio/Wood_Impact_1.mp3" id="3_d2o8a"]
+[ext_resource type="AudioStream" uid="uid://bmobvryipskbr" path="res://assets/audio/Wood_Impact_2.mp3" id="4_gpx3d"]
 [ext_resource type="Script" uid="uid://cvbqi8qrspe13" path="res://impact.gd" id="5_k4gx4"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3vhlk"]
@@ -11,8 +11,8 @@ data = PackedVector3Array(-0.037299998, 1.1003, -1.4861, 0.3041, 1.1714, -1.4702
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kbpg3"]
 streams_count = 2
-stream_0/stream = ExtResource("3_hsgds")
-stream_1/stream = ExtResource("4_uyok6")
+stream_0/stream = ExtResource("3_d2o8a")
+stream_1/stream = ExtResource("4_gpx3d")
 
 [node name="Bush" unique_id=1010906404 instance=ExtResource("1_m8inq")]
 script = ExtResource("2_ockhy")

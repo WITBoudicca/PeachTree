@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bgsaug57ttcup"]
+
+[ext_resource type="PackedScene" uid="uid://cx00gum745pim" path="res://assets/entities/player/SplitPeach.glb" id="1_16ab4"]
+
+[node name="SplitPeach" unique_id=757990793 instance=ExtResource("1_16ab4")]
+
+[node name="Peach" parent="." index="0" unique_id=761301214]
+transform = Transform3D(0.42716333, -0.07203357, 0.25168163, 0.07251154, -0.43025827, -0.24621308, 0.25154433, 0.24635333, -0.35642174, 0, -0.16589904, 0)

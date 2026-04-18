@@ -82,7 +82,6 @@ offset_top = 30.0
 offset_right = 429.0
 offset_bottom = 45.0
 theme_override_styles/background = SubResource("StyleBoxEmpty_kwec2")
-max_value = 1000.0
 show_percentage = false
 
 [node name="DistancePips" type="RichTextLabel" parent="PlayUI" unique_id=682480475]
@@ -104,6 +103,7 @@ offset_left = -145.005
 offset_top = 21.0
 offset_right = -105.005005
 offset_bottom = 62.0
+grow_horizontal = 0
 texture = ExtResource("4_ybwfh")
 stretch_mode = 2
 
@@ -116,6 +116,7 @@ offset_left = -104.505005
 offset_top = 21.0
 offset_right = -64.505005
 offset_bottom = 62.0
+grow_horizontal = 0
 texture = ExtResource("4_ybwfh")
 stretch_mode = 2
 
@@ -128,6 +129,7 @@ offset_left = -65.0
 offset_top = 21.0
 offset_right = -25.0
 offset_bottom = 62.0
+grow_horizontal = 0
 texture = ExtResource("4_ybwfh")
 stretch_mode = 2
 

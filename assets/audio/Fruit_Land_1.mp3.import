@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Fruit_Land_1.mp3-f8c5773202bb3702f77094e63c7c
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

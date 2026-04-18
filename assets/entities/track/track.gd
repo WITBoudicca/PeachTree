@@ -27,8 +27,15 @@ func _ready() -> void:
 	obstacleList.append(load("res://assets/entities/obstacles/bush.tscn"))
 	obstacleList.append(load("res://assets/entities/obstacles/log.tscn"))
 	obstacleList.append(load("res://assets/entities/obstacles/rock.tscn"))
+	obstacleList.append(load("res://assets/entities/obstacles/rock_cluster.tscn"))
+	obstacleList.append(load("res://assets/entities/obstacles/berriless_bush.tscn"))
+	obstacleList.append(load("res://assets/entities/obstacles/stump.tscn"))
+	obstacleList.append(load("res://assets/entities/obstacles/dead_tree.tscn"))
+	obstacleList.append(load("res://assets/entities/obstacles/hollow_log.tscn"))
+	obstacleList.append(load("res://assets/entities/obstacles/crappy_fence.tscn"))
+	obstacleList.append(load("res://assets/entities/obstacles/flat_rock.tscn"))
 	#new obstacles get put here obv, following same format as above
-	for i in (Controller.totDistance+10):
+	for i in (Controller.totDistance+12):
 		#picking a random obstacle from the list and spawning it
 		var rand = int(randf_range(0,obstacleList.size()))
 		var newObst = obstacleList[rand].instantiate()

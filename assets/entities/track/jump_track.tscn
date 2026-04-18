@@ -26,7 +26,7 @@ collision_layer = 4
 shape = SubResource("ConcavePolygonShape3D_jx84g")
 
 [node name="despawnDelay" type="Timer" parent="Track" index="1" unique_id=692689149]
-wait_time = 10.0
+wait_time = 60.0
 script = ExtResource("3_fi6pg")
 
 [node name="TrackSpawnArea" type="Area3D" parent="." index="1" unique_id=1402129953]

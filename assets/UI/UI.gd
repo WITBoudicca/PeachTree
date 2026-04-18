@@ -26,6 +26,7 @@ func _ready() -> void:
 	Controller.game_Over.connect(_controller_game_over)
 	Controller.game_Start.connect(_controller_game_start)
 	Controller.take_Damage.connect(_on_damage)
+	Controller.restart.connect(_restart)
 	lightHealth = "#FFFFFF"
 	darkHealth = "#919191"
 	
@@ -48,12 +49,14 @@ func _process(_delta: float) -> void: #it's obviously bad to do the pips in the 
 
 func _controller_game_over():
 	playUI.visible = false
-	titleScreen.visible = true
 
 func _controller_game_start():
 	titleScreen.visible = false
 	playUI.visible = true
 	_on_damage()
+
+func _restart():
+	titleScreen.visible = true
 
 func _on_damage():
 	match Controller.health:
