@@ -44,7 +44,7 @@ func _process(_delta: float) -> void: #it's obviously bad to do the pips in the 
 	if (Controller.canMove):
 		distanceBar.value = Controller.distance
 		distancePips.text = ""
-		for i in range(Controller.totDistance):
+		for i in range(Controller.peachPips):
 			distancePips.text += "O"
 
 func _controller_game_over():

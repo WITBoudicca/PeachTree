@@ -1,15 +1,30 @@
 [gd_scene format=3 uid="uid://sxmyd0oloplv"]
 
 [ext_resource type="Script" uid="uid://bqwt2hv5fjwib" path="res://assets/UI/UI.gd" id="1_akoi8"]
-[ext_resource type="Texture2D" uid="uid://tjh3wyy5oglm" path="res://assets/UI/Title Temp.jpg" id="2_kwec2"]
+[ext_resource type="StyleBox" uid="uid://4bswrkkwjrjj" path="res://assets/UI/Button Style.tres" id="2_a7tlk"]
 [ext_resource type="FontFile" uid="uid://cv4ehaichw6hi" path="res://assets/UI/PublicPixel-rv0pA.ttf" id="3_kwec2"]
-[ext_resource type="Texture2D" uid="uid://b321t0hdya2ko" path="res://assets/UI/PipTemp.jpg" id="4_ybwfh"]
+[ext_resource type="Texture2D" uid="uid://b6pwctpwjat2y" path="res://assets/UI/Button.png" id="3_u170h"]
+[ext_resource type="Texture2D" uid="uid://myl3dh6pg26e" path="res://assets/UI/PeachTreeLogo.png" id="5_eo6ec"]
+[ext_resource type="Texture2D" uid="uid://cev3f8jb8h0mr" path="res://assets/UI/HealthPip.png" id="6_a7tlk"]
 
-[sub_resource type="Theme" id="Theme_kwec2"]
+[sub_resource type="Theme" id="Theme_a7tlk"]
 default_font = ExtResource("3_kwec2")
 
-[sub_resource type="Theme" id="Theme_mymci"]
-default_font = ExtResource("3_kwec2")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ak7xp"]
+texture = ExtResource("3_u170h")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(0.60933006, 0.6093301, 0.60933006, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_66bgb"]
+texture = ExtResource("3_u170h")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(1.2742168, 1.2742168, 1.2742168, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kwec2"]
 
@@ -26,6 +41,7 @@ offset_right = 1152.0
 offset_bottom = 648.0
 
 [node name="PlayButton" type="Button" parent="TitleScreen" unique_id=232934289]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -33,41 +49,46 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -204.0
-offset_top = -203.0
-offset_right = -52.0
+offset_top = -243.0
+offset_right = -50.84204
 offset_bottom = -146.0
 grow_horizontal = 0
 grow_vertical = 0
-theme = SubResource("Theme_kwec2")
+theme = SubResource("Theme_a7tlk")
+theme_override_styles/normal = ExtResource("2_a7tlk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ak7xp")
+theme_override_styles/hover = SubResource("StyleBoxTexture_66bgb")
 text = "Play"
 
-[node name="QuitButton" type="Button" parent="TitleScreen" unique_id=1328058758]
+[node name="QuitButton" type="Button" parent="TitleScreen" unique_id=1195912247]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -204.0
-offset_top = -109.0
-offset_right = -52.0
-offset_bottom = -52.0
+offset_left = -254.84204
+offset_top = -143.0
+offset_right = -101.68408
+offset_bottom = -46.0
 grow_horizontal = 0
 grow_vertical = 0
-theme = SubResource("Theme_mymci")
+theme = SubResource("Theme_a7tlk")
+theme_override_styles/normal = ExtResource("2_a7tlk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ak7xp")
+theme_override_styles/hover = SubResource("StyleBoxTexture_66bgb")
 text = "Quit
 "
 
 [node name="Title" type="TextureRect" parent="TitleScreen" unique_id=191251957]
+texture_filter = 1
 layout_mode = 0
-offset_left = 74.0
-offset_top = 50.0
-offset_right = 484.0
-offset_bottom = 264.0
-texture = ExtResource("2_kwec2")
+offset_right = 593.92523
+offset_bottom = 310.0
+texture = ExtResource("5_eo6ec")
 
 [node name="PlayUI" type="Control" parent="." unique_id=789128436]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
@@ -94,44 +115,47 @@ offset_bottom = 100.0
 theme = SubResource("Theme_ybwfh")
 fit_content = true
 
-[node name="Health1" type="TextureRect" parent="PlayUI" unique_id=1573776025]
+[node name="Health3" type="TextureRect" parent="PlayUI" unique_id=725514987]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -145.005
+offset_left = -67.0
+offset_top = 21.0
+offset_right = -26.0
+offset_bottom = 62.0
+grow_horizontal = 0
+texture = ExtResource("6_a7tlk")
+expand_mode = 2
+
+[node name="Health2" type="TextureRect" parent="PlayUI" unique_id=1573776025]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -107.0
+offset_top = 21.0
+offset_right = -66.0
+offset_bottom = 62.0
+grow_horizontal = 0
+texture = ExtResource("6_a7tlk")
+expand_mode = 2
+
+[node name="Health1" type="TextureRect" parent="PlayUI" unique_id=263525152]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -146.005
 offset_top = 21.0
 offset_right = -105.005005
 offset_bottom = 62.0
 grow_horizontal = 0
-texture = ExtResource("4_ybwfh")
-stretch_mode = 2
-
-[node name="Health2" type="TextureRect" parent="PlayUI" unique_id=1670916853]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -104.505005
-offset_top = 21.0
-offset_right = -64.505005
-offset_bottom = 62.0
-grow_horizontal = 0
-texture = ExtResource("4_ybwfh")
-stretch_mode = 2
-
-[node name="Health3" type="TextureRect" parent="PlayUI" unique_id=1202875231]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -65.0
-offset_top = 21.0
-offset_right = -25.0
-offset_bottom = 62.0
-grow_horizontal = 0
-texture = ExtResource("4_ybwfh")
-stretch_mode = 2
+texture = ExtResource("6_a7tlk")
+expand_mode = 2
 
 [connection signal="pressed" from="TitleScreen/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="TitleScreen/QuitButton" to="." method="_on_quit_button_pressed"]

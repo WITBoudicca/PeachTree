@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://0qltftyksod0"]
+
+[ext_resource type="PackedScene" uid="uid://c1ynipy72t8ku" path="res://assets/entities/obstacles/Tall Grass.glb" id="1_2fvam"]
+
+[node name="Tall Grass" unique_id=418161678 instance=ExtResource("1_2fvam")]
+
+[node name="Plane" parent="." index="0" unique_id=122701996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1311124, 0)

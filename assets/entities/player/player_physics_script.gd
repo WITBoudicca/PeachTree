@@ -9,7 +9,7 @@ var jumpDetect
 var airborne = false
 var camera
 var hurtInvuln = true
-
+var collisions = 0 #tracks number of current objects colliding with the player to help alleviate dead input areas
 #Distance Tracking
 var lastFramePos
 #Audio Variables
@@ -59,8 +59,8 @@ func _physics_process(delta: float) -> void:
 			direction = direction.rotated(Vector3.UP, camera.global_rotation.y)
 			angular_velocity += direction*SPEED*delta
 		if airborne == false and Input.is_key_pressed(KEY_SPACE): #last minute, but now in order to jump you ahve to spend one of your total distance pips, which grows a peach tree underneath you
-			if (Controller.totDistance > 0):
-				Controller.totDistance -= 1
+			if (Controller.peachPips > 0):
+				Controller.peachPips -= 1
 				linear_velocity.y += 10
 				airborne = true
 				var newTree = peachTree.instantiate()
@@ -83,6 +83,7 @@ func _physics_process(delta: float) -> void:
 	if (Controller.distance >= Controller.MAXDISTTOTOT):
 		Controller.distance = 0
 		Controller.totDistance += 1
+		Controller.peachPips += 1
 func _process(_delta: float) -> void: #i think my coding instructors would be right to kill me for this function but i love all my children and i'm too tired to think of something better
 		gameMusic.set_volume_db(gameVolume)
 		menuMusic.set_volume_db(menuVolume)
@@ -135,7 +136,10 @@ func _on_Damage():
 func _on_jump_detection_body_entered(_body: Node3D) -> void:
 	airborne = false
 	landSFX.play()
+	collisions += 1
 
 
 func _on_jump_detection_body_exited(_body: Node3D) -> void:
-	airborne = true
+	collisions -= 1
+	if (collisions == 0):
+		airborne = true

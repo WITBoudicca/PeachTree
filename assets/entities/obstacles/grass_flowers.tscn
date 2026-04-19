@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dni3j3xb7swhq"]
+
+[ext_resource type="PackedScene" uid="uid://clbnsfc6si3jq" path="res://assets/entities/obstacles/Grass Flowers.glb" id="1_hn7nf"]
+
+[node name="Grass Flowers" unique_id=990137767 instance=ExtResource("1_hn7nf")]
+
+[node name="Grass" parent="." index="0" unique_id=1810854782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.071498156, 0)
+
+[node name="Icosphere" parent="." index="1" unique_id=976121259]
+transform = Transform3D(0.2545677, 0, 0, 0, 0.12230511, 0, 0, 0, 0.2545677, 0, 0.09324235, 0)

@@ -32,6 +32,9 @@ adjustment_enabled = true
 adjustment_contrast = 0.75
 adjustment_saturation = 1.4
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_vlrf3"]
+size = Vector3(80.04378, 67.89787, 28.321136)
+
 [node name="Node3D" type="Node3D" unique_id=374832989]
 
 [node name="Peach" parent="." unique_id=1399737280 groups=["Player"] instance=ExtResource("1_kk00r")]
@@ -57,3 +60,9 @@ shadow_blur = 5.0
 
 [node name="PeachTree2" parent="." unique_id=1528841445 instance=ExtResource("6_vlrf3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2842007, -0.24317321, -7.2551346)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=340554159]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1297692190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6315384, -4.375908, 13.660568)
+shape = SubResource("BoxShape3D_vlrf3")
